@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'application'
 
 repositories {
     jcenter()
@@ -9,11 +10,18 @@ repositories {
         }
 }
 
+mainClassName = "PrintParse"
+
+applicationDistribution.from("input") {
+    into "bin/input"
+}
+
 dependencies {
 	compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.24'
 	compile group: 'edu.stanford.nlp', name: 'stanford-corenlp', version: '3.6.0'
     compile group: 'log4j', name: 'log4j', version: '1.2.17'
-	compile group: 'edu.stanford.nlp', name: 'stanford-pos-tagger', version: '3.0.2'
+	//compile group: 'edu.stanford.nlp', name: 'stanford-pos-tagger', version: '3.0.2'
 	compile group: 'commons-io', name: 'commons-io', version: '2.5'
+	compile 'edu.stanford.nlp:stanford-corenlp:3.7.0:models'
     testCompile 'junit:junit:4.12'
 }
